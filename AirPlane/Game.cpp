@@ -8,6 +8,7 @@ Game::Game()
 	, mSpeedFame(50.f)
 {
 	mResources.Load(Textures::Airplane,"source/player/plane0.png");
+	
 	mPlaySprite.setTexture(mResources.Get(Textures::Airplane));
 }
 
