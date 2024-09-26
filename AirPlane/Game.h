@@ -21,7 +21,7 @@ private:
 private:
 	sf::RenderWindow mWindow;	//游戏窗口
 	sf::Sprite mPlaySprite;
-	Resources mResources;//角色
+	Resources<sf::Texture,Textures::ID> mResources;//角色
 
 	sf::Time mTimeFame;//每帧时间
 	double mSpeedFame;//每帧移动速度
