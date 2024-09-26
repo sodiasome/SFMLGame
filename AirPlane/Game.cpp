@@ -3,16 +3,12 @@
 
 Game::Game()
 	: mWindow(sf::VideoMode(640, 480), "AirPlane")
-	, mPlayTexture()
 	, mPlaySprite()
 	, mTimeFame(sf::seconds(1.f / 60.f))
 	, mSpeedFame(50.f)
 {
-	if (!mPlayTexture.loadFromFile("source/player/plane0.png"))
-	{
-
-	}
-	mPlaySprite.setTexture(mPlayTexture);
+	mResources.Load(Textures::Airplane,"source/player/plane0.png");
+	mPlaySprite.setTexture(mResources.Get(Textures::Airplane));
 }
 
 Game::~Game()

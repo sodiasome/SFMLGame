@@ -4,6 +4,7 @@
 // sodiasome@163.com
 
 #include <SFML/Graphics.hpp>
+#include "Resources.h"
 
 using namespace sf;
 
@@ -19,8 +20,8 @@ private:
 	void Render();				//游戏渲染
 private:
 	sf::RenderWindow mWindow;	//游戏窗口
-	sf::Texture mPlayTexture;	//角色
 	sf::Sprite mPlaySprite;
+	Resources mResources;//角色
 
 	sf::Time mTimeFame;//每帧时间
 	double mSpeedFame;//每帧移动速度
