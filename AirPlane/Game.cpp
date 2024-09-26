@@ -6,6 +6,7 @@
 Game::Game()
 	: mWindow(sf::VideoMode(640, 480), "AirPlane")
 	, mPlayer()
+	, mTimeFame(sf::seconds(1.f / 60.f))
 {
 	mPlayer.setSize(sf::Vector2f(50.f,50.f));
 	mPlayer.setFillColor(sf::Color::Yellow);
@@ -18,14 +19,23 @@ Game::~Game()
 
 void Game::Run()
 {
+	sf::Clock clock;
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen())
 	{
 		//处理事件
 		ProcessEvent();
 
-		//更新
-		Update();
+		timeSinceLastUpdate += clock.restart();
+		if (timeSinceLastUpdate > mTimeFame)
+		{
+			timeSinceLastUpdate -= mTimeFame;
+			//处理事件
+			ProcessEvent();
 
+			//更新
+			Update();
+		}
 		//渲染
 		Render();	
 	}
@@ -43,18 +53,18 @@ void Game::ProcessEvent()
 
 void Game::Update()
 {
-	static double dX = 0;
-	static double dY = 0;
-	mPlayer.setPosition(dX, dY);
+	sf::Vector2f movePoint(0.f,0.f);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		--dX;
+		movePoint.x -= 1.f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		++dX;
+		movePoint.x += 1.f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		--dY;
+		movePoint.y -= 1.f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		++dY;
+		movePoint.y += 1.f;
+
+	mPlayer.move(movePoint);
 }
 
 void Game::Render()

@@ -20,5 +20,7 @@ private:
 private:
 	sf::RenderWindow mWindow;	//游戏窗口
 	sf::RectangleShape mPlayer;		//角色
+
+	sf::Time mTimeFame;//每帧时间
 };
 
