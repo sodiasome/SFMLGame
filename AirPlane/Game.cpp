@@ -1,17 +1,18 @@
 ﻿
 #include "Game.h"
 
-
-
 Game::Game()
 	: mWindow(sf::VideoMode(640, 480), "AirPlane")
-	, mPlayer()
+	, mPlayTexture()
+	, mPlaySprite()
 	, mTimeFame(sf::seconds(1.f / 60.f))
 	, mSpeedFame(50.f)
 {
-	mPlayer.setSize(sf::Vector2f(50.f,50.f));
-	mPlayer.setFillColor(sf::Color::Yellow);
-	mPlayer.setPosition(100.f,100.f);
+	if (!mPlayTexture.loadFromFile("source/player/plane0.png"))
+	{
+
+	}
+	mPlaySprite.setTexture(mPlayTexture);
 }
 
 Game::~Game()
@@ -55,7 +56,6 @@ void Game::ProcessEvent()
 void Game::Update()
 {
 	sf::Vector2f movePoint(0.f,0.f);
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		movePoint.x -= mSpeedFame;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -64,13 +64,12 @@ void Game::Update()
 		movePoint.y -= mSpeedFame;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		movePoint.y += mSpeedFame;
-
-	mPlayer.move(movePoint * mTimeFame.asSeconds());
+	mPlaySprite.move(movePoint * mTimeFame.asSeconds());
 }
 
 void Game::Render()
 {	
 	mWindow.clear();
-	mWindow.draw(mPlayer);
+	mWindow.draw(mPlaySprite);
 	mWindow.display();
 }

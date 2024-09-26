@@ -19,7 +19,8 @@ private:
 	void Render();				//游戏渲染
 private:
 	sf::RenderWindow mWindow;	//游戏窗口
-	sf::RectangleShape mPlayer;		//角色
+	sf::Texture mPlayTexture;	//角色
+	sf::Sprite mPlaySprite;
 
 	sf::Time mTimeFame;//每帧时间
 	double mSpeedFame;//每帧移动速度
