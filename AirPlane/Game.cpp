@@ -7,6 +7,7 @@ Game::Game()
 	: mWindow(sf::VideoMode(640, 480), "AirPlane")
 	, mPlayer()
 	, mTimeFame(sf::seconds(1.f / 60.f))
+	, mSpeedFame(50.f)
 {
 	mPlayer.setSize(sf::Vector2f(50.f,50.f));
 	mPlayer.setFillColor(sf::Color::Yellow);
@@ -56,15 +57,15 @@ void Game::Update()
 	sf::Vector2f movePoint(0.f,0.f);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		movePoint.x -= 1.f;
+		movePoint.x -= mSpeedFame;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		movePoint.x += 1.f;
+		movePoint.x += mSpeedFame;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		movePoint.y -= 1.f;
+		movePoint.y -= mSpeedFame;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		movePoint.y += 1.f;
+		movePoint.y += mSpeedFame;
 
-	mPlayer.move(movePoint);
+	mPlayer.move(movePoint * mTimeFame.asSeconds());
 }
 
 void Game::Render()

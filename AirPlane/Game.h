@@ -22,5 +22,6 @@ private:
 	sf::RectangleShape mPlayer;		//角色
 
 	sf::Time mTimeFame;//每帧时间
+	double mSpeedFame;//每帧移动速度
 };
 
