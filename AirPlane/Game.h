@@ -14,6 +14,7 @@ public:
 	~Game();
 	void Run();					//游戏主循环
 private:
+	void ProcessEvent();		//处理事件
 	void Update();				//游戏操作更新
 	void Render();				//游戏渲染
 private:
