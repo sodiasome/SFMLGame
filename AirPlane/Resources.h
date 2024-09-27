@@ -11,7 +11,8 @@ using namespace sf;
 
 namespace Textures
 {
-    enum ID { Landscape, Airplane, Missile };//景观、飞机、飞弹
+    enum ID { Landscape, Airplane, Missile};//景观、飞机、飞弹
+    enum Plane{ Host, Slaver };
 }
 
 template <typename Resource, typename Identifier>
@@ -59,4 +60,6 @@ public:
 private:
     std::map<Identifier, std::unique_ptr<Resource>> mTextureMap;
 };
+
+typedef Resources<sf::Texture, Textures::ID> TextureResource;
 
