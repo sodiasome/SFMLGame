@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{949a9a14-b47c-4874-aba3-6ed262ed9457}</ProjectGuid>
+    <ProjectGuid>{3cb8366a-0e29-4dce-b279-01068a3bce02}</ProjectGuid>
     <RootNamespace>AirPlane</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -144,7 +144,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EAircraft.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneNode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EAircraft.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="SceneNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

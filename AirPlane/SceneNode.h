@@ -18,17 +18,29 @@ class SceneNode
 public:
     // 非常频繁地使用 std：：unique_ptr 类型，因此我们为它创建一个 typedef 作为 SceneNode 类中的成员。
     typedef std::unique_ptr<SceneNode> Ptr;
+    enum Layer{
+        Background,
+        Air,
+        LayerCount
+    };
 public:
     SceneNode();
     // 插入节点
     void attachChild(Ptr child);
     // 删除节点
     Ptr detachChild(const SceneNode& node);
+
+    void update(sf::Time dt);
+private:
+    // 当前节点的更新和子节点的更新
+    virtual void updateCurrent(sf::Time dt);
+    void updateChildren(sf::Time dt);
 private:
     // 为了存储子项，我们使用 STL 容器 std：：vector
     std::vector<Ptr> mChildren;
     // 存储了指向父节点的指针
     SceneNode* mParent;
+    sf::Vector2f mVelocity;//实体每帧移动速度
 
     // 覆盖sf：:D rawable 的纯虚拟 draw（） 函数来渲染整个场景节点
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
