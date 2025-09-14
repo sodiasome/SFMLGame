@@ -1,0 +1,18 @@
+# 忽略编译产物
+*.o
+*.exe
+proxy_test
+
+# Visual Studio 产物
+*.pdb
+*.ilk
+*.user
+*.suo
+Debug/
+Release/
+x64/
+
+# 临时文件
+*~
+*.tmp
+*.swp
